@@ -22,21 +22,7 @@ function createMarkup(items) {
     .join("");
 }
 
-galleryRef.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  const selectedImgSrc = e.target.dataset.source;
-  const selectedImgAlt = e.target.alt;
-  showModal(selectedImgSrc, selectedImgAlt);
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
 });
-
-function showModal(imageSrc, imageAlt) {
-  const modal = basicLightbox.create(`
-    <img src="${imageSrc}" alt="${imageAlt}" width="800" height="600">
-  `);
-  modal.show();
-}
-
-const lightbox = new SimpleLightbox(".gallery a", {});
